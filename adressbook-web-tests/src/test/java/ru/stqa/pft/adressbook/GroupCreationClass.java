@@ -15,6 +15,13 @@ public class GroupCreationClass {
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "D:\\soft\\webDrivers\\chromedriver.exe");
         driver = new ChromeDriver();
+        driver.get("http://localhost/addressbook/group.php");
+        driver.findElement(By.name("user")).click();
+        driver.findElement(By.name("user")).sendKeys("admin");
+        driver.findElement(By.name("pass")).click();
+        driver.findElement(By.name("pass")).sendKeys("secret");
+        driver.findElement(By.xpath("//input[@value='Login']")).click();
+        driver.findElement(By.name("new")).click();
     }
 
     @AfterMethod
@@ -23,14 +30,7 @@ public class GroupCreationClass {
     }
 
     @Test
-    public void addGroup() {
-            driver.get("http://localhost/addressbook/group.php");
-            driver.findElement(By.name("user")).click();
-            driver.findElement(By.name("user")).sendKeys("admin");
-            driver.findElement(By.name("pass")).click();
-            driver.findElement(By.name("pass")).sendKeys("secret");
-            driver.findElement(By.xpath("//input[@value='Login']")).click();
-            driver.findElement(By.name("new")).click();
+    public void testAddGroup() {
             driver.findElement(By.name("group_name")).click();
             driver.findElement(By.name("group_name")).sendKeys("test2");
             driver.findElement(By.name("group_header")).click();
