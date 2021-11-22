@@ -16,12 +16,15 @@ public class GroupCreationClass {
         System.setProperty("webdriver.chrome.driver", "D:\\soft\\webDrivers\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("http://localhost/addressbook/group.php");
+        login("admin", "secret");
+    }
+
+    private void login(String login, String pass) {
         driver.findElement(By.name("user")).click();
-        driver.findElement(By.name("user")).sendKeys("admin");
+        driver.findElement(By.name("user")).sendKeys(login);
         driver.findElement(By.name("pass")).click();
-        driver.findElement(By.name("pass")).sendKeys("secret");
+        driver.findElement(By.name("pass")).sendKeys(pass);
         driver.findElement(By.xpath("//input[@value='Login']")).click();
-        driver.findElement(By.name("new")).click();
     }
 
     @AfterMethod
@@ -31,13 +34,34 @@ public class GroupCreationClass {
 
     @Test
     public void testAddGroup() {
-            driver.findElement(By.name("group_name")).click();
-            driver.findElement(By.name("group_name")).sendKeys("test2");
-            driver.findElement(By.name("group_header")).click();
-            driver.findElement(By.name("group_header")).sendKeys("test2");
-            driver.findElement(By.name("group_footer")).click();
-            driver.findElement(By.name("group_footer")).sendKeys("test2");
-            driver.findElement(By.name("submit")).click();
-            driver.findElement(By.linkText("group page")).click();
+        gotoGroupPage();
+        initGroupCreation();
+        fillGroupForm(new GroupData("test2", "test2", "test2"));
+        submitGroupCreation();
+        returnToGroupPage();
+    }
+
+    private void returnToGroupPage() {
+        driver.findElement(By.linkText("group page")).click();
+    }
+
+    private void submitGroupCreation() {
+        driver.findElement(By.name("submit")).click();
+    }
+
+    private void fillGroupForm(GroupData groupData) {
+        driver.findElement(By.name("group_name")).sendKeys(groupData.getName());
+        driver.findElement(By.name("group_header")).click();
+        driver.findElement(By.name("group_header")).sendKeys(groupData.getHeader());
+        driver.findElement(By.name("group_footer")).click();
+        driver.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
+    }
+
+    private void initGroupCreation() {
+        driver.findElement(By.name("group_name")).click();
+    }
+
+    private void gotoGroupPage() {
+        driver.findElement(By.name("new")).click();
     }
 }
