@@ -2,11 +2,12 @@ package ru.stqa.pft.adressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
-public class HelperBase {
+public class BaseHelper {
     protected final WebDriver driver;
 
-    public HelperBase(WebDriver driver) {
+    public BaseHelper(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -18,5 +19,11 @@ public class HelperBase {
 
     public void click(By locator) {
         driver.findElement(locator).click();
+    }
+
+    public void dropdown(By locator, String value) {
+        //driver.findElement(locator).click();
+        WebElement dropdown = driver.findElement(locator);
+        dropdown.findElement(By.xpath("//option[. = '" + value + "']")).click();
     }
 }

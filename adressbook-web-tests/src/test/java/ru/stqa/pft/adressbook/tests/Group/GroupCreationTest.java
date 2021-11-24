@@ -1,10 +1,11 @@
-package ru.stqa.pft.adressbook.tests;
+package ru.stqa.pft.adressbook.tests.Group;
 
 import org.testng.annotations.Test;
 import ru.stqa.pft.adressbook.model.GroupData;
+import ru.stqa.pft.adressbook.tests.TestBase;
 
 
-public class GroupCreationClass extends TestBase{
+public class GroupCreationTest extends TestBase {
 
     @Test
     public void testAddGroup() {
