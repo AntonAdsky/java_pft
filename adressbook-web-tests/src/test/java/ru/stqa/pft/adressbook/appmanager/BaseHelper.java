@@ -26,4 +26,8 @@ public class BaseHelper {
         WebElement dropdown = driver.findElement(locator);
         dropdown.findElement(By.xpath("//option[. = '" + value + "']")).click();
     }
+
+    public void submitAlert () {
+        driver.switchTo().alert().accept();
+    }
 }

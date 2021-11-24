@@ -1,4 +1,4 @@
-package ru.stqa.pft.adressbook.tests.Group;
+package ru.stqa.pft.adressbook.tests.group;
 
 import org.testng.annotations.Test;
 import ru.stqa.pft.adressbook.tests.TestBase;

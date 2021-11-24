@@ -25,11 +25,20 @@ public class ContactHelper extends BaseHelper {
         dropdown(By.name("bmonth"), contactData.getBmonth());
         type(By.name("byear"), contactData.getByear());
         dropdown(By.name("new_group"), contactData.getGroup());
+    }
+
+    public void submitContactCreation() {
+        click(By.name("submit"));
+    }
+
+    public void selectContact (String firstName, String lastName) {
+        driver.findElement(By.xpath("//input[@title='Select (" + firstName + " " + lastName + ")']")).click();
 
     }
 
-    public void submitGroupCreation() {
-        click(By.name("submit"));
+    public void submitDeleteContact() {
+        driver.findElement(By.xpath("//input[@value='Delete']")).click();
+        submitAlert();
     }
 
 }

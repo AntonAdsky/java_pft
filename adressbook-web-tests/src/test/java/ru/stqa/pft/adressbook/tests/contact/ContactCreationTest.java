@@ -1,4 +1,4 @@
-package ru.stqa.pft.adressbook.tests.Contcat;
+package ru.stqa.pft.adressbook.tests.contact;
 
 import org.testng.annotations.Test;
 import ru.stqa.pft.adressbook.model.ContactData;
@@ -27,6 +27,6 @@ public class ContactCreationTest extends TestBase {
                 "test3"
         );
         app.getContactHelper().fillContactForm(contact);
-        app.getContactHelper().submitGroupCreation();
+        app.getContactHelper().submitContactCreation();
     }
 }
